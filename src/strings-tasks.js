@@ -289,8 +289,19 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  let newStr = '';
+  let arrStr = [];
+  if (str === undefined || str === null) {
+    return newStr;
+  }
+  arrStr = str.split('');
+
+  arrStr = arrStr.sort();
+  for (let i = 0; i < arrStr.length; i += 1) {
+    newStr += arrStr[i];
+  }
+  return newStr;
 }
 
 /**
@@ -305,8 +316,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -323,8 +334,21 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  let number = 0;
+  if (str === undefined || str === null) {
+    return number;
+  }
+  for (let char = 0; char < str.length; char += 1) {
+    for (let i = 0; i < vowels.length; i += 1) {
+      if (str[char] === vowels[i]) {
+        number += 1;
+      }
+    }
+  }
+
+  return number;
 }
 
 /**
@@ -340,8 +364,25 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const lengthStr = str.length;
+  let newStr = '';
+  let clearStr = '';
+  if (str === undefined || str === null) {
+    return false;
+  }
+  for (let i = 0; i < lengthStr; i += 1) {
+    if (str[i] !== ' ' && str[i] !== '?' && str[i] !== '!' && str[i] !== ',') {
+      clearStr += str[i];
+    }
+  }
+  for (let i = clearStr.length - 1; i >= 0; i -= 1) {
+    newStr += clearStr[i];
+  }
+  if (newStr.toLowerCase().localeCompare(clearStr.toLowerCase()) === 0) {
+    return true;
+  }
+  return false;
 }
 
 /**
